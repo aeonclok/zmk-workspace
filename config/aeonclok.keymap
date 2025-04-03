@@ -23,10 +23,19 @@
         compatible = "zmk,keymap";
         default_layer {
         bindings = <
-                        &kp P &kp L &kp H &kp V                   &kp C &kp G &kp O &kp DOT
-                  &kp F &kp T &kp N &kp E &kp B                   &kp W &kp U &kp A &kp E &kp Z
-        &kp RSHFT &kp S &kp D &kp R &kp M                               &kp Y &kp SQT &kp SEMI &kp I &kp LSHFT
-        &kp X     &kp J             &kp A &kp A &kp A       &kp A &kp SPACE &kp A              &kp COMMA &kp Q
+                          &kp P     &kp L     &kp H     &kp V                         &kp C     &kp G     &kp O     &kp DOT
+                &kp F     &kp T     &kp N     &kp E     &kp B                         &kp W     &kp U     &kp A     &kp E     &kp Z
+      &kp RSHFT &kp S     &kp D     &kp R     &kp M                                             &kp Y     &kp SQT   &kp SEMI  &kp I     &kp LSHFT
+      &kp X     &kp J                         &kp A     &kp A     &kp A     &lt 1 A   &kp SPACE &kp A                         &kp COMMA &kp Q
+        >;
+        };
+
+        second_layer {
+        bindings = <
+                          &trans    &trans    &trans    &trans                        &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
+                &trans    &trans    &trans    &trans    &trans                        &out OUT_TOG &trans  &trans   &trans    &trans
+      &trans    &trans    &trans    &trans    &trans                                            &trans    &trans    &trans    &trans    &trans
+      &trans    &trans                        &trans    &trans    &trans    &trans    &bootloader &sys_reset                  &bt BT_CLR &bt BT_CLR
         >;
         };
     };

@@ -133,8 +133,8 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//Path to a program.
-CMAKE_C_COMPILER:FILEPATH=/nix/store/4viqyxy7nfd3nxw9zcqxy1j6gqcbg2lc-zephyr-sdk-0.16.9/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+//C compiler
+CMAKE_C_COMPILER:STRING=/nix/store/4viqyxy7nfd3nxw9zcqxy1j6gqcbg2lc-zephyr-sdk-0.16.9/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -325,7 +325,7 @@ DTC:FILEPATH=/nix/store/xx2yyvh1jfh59nxlsyl5p8hkgbjd2dad-dtc-1.7.2/bin/dtc
 // parameter. These settings will override the settings in the
 // board's .dts file. Multiple files may be listed, e.g. DTC_OVERLAY_FILE="dts1.overlay
 // dts2.overlay"
-DTC_OVERLAY_FILE:STRING=/home/reima/zmk-workspace/zmk-aeonclok-module/boards/shields/aeonclok/aeonclok.keymap
+DTC_OVERLAY_FILE:STRING=/home/reima/zmk-workspace/config/aeonclok.keymap
 
 //Linker BFD compatibility (compiler reported)
 GNULD_LINKER_IS_BFD:BOOL=ON
@@ -340,7 +340,7 @@ GPERF:FILEPATH=GPERF-NOTFOUND
 IMGTOOL:FILEPATH=IMGTOOL-NOTFOUND
 
 //Selected keymap file
-KEYMAP_FILE:STRING=/home/reima/zmk-workspace/zmk-aeonclok-module/boards/shields/aeonclok/aeonclok.keymap
+KEYMAP_FILE:STRING=/home/reima/zmk-workspace/config/aeonclok.keymap
 
 //nrfx Directory
 NRFX_DIR:PATH=/home/reima/zmk-workspace/modules/hal/nordic/nrfx
@@ -474,6 +474,8 @@ CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER
+CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_AR
 CMAKE_C_COMPILER_AR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_RANLIB
@@ -532,7 +534,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=126
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=122
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -597,8 +599,6 @@ _Python3_EXECUTABLE:INTERNAL=/nix/store/4s0anqrk14qblqi8d6c0cxwxxiaw9bpf-python3
 //Python3 Properties
 _Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;12;9;64;<none>;cpython-312-x86_64-linux-gnu.so;abi3;/nix/store/26yi95240650jxp5dj78xzch70i1kzlz-python3-3.12.9/lib/python3.12;/nix/store/4s0anqrk14qblqi8d6c0cxwxxiaw9bpf-python3-3.12.9-env/lib/python3.12;/nix/store/4s0anqrk14qblqi8d6c0cxwxxiaw9bpf-python3-3.12.9-env/lib/python3.12/site-packages;/nix/store/4s0anqrk14qblqi8d6c0cxwxxiaw9bpf-python3-3.12.9-env/lib/python3.12/site-packages
 _Python3_INTERPRETER_SIGNATURE:INTERNAL=40b6ff954f54454823f84790307865d2
-//Interpreter reason failure
-_Python3_Interpreter_REASON_FAILURE:INTERNAL=
 //NumPy reason failure
 _Python3_NumPy_REASON_FAILURE:INTERNAL=
 

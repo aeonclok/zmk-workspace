@@ -69,8 +69,6 @@
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/lib/posix/CMakeFiles/lib__posix.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/lib/posix/CMakeFiles/edit_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/lib/posix/CMakeFiles/rebuild_cache.dir
-/home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/lib/posix/getopt/CMakeFiles/edit_cache.dir
-/home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/lib/posix/getopt/CMakeFiles/rebuild_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/lib/hash/CMakeFiles/edit_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/lib/hash/CMakeFiles/rebuild_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/lib/os/CMakeFiles/edit_cache.dir
@@ -122,7 +120,6 @@
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/random/CMakeFiles/subsys__random.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/random/CMakeFiles/edit_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/random/CMakeFiles/rebuild_cache.dir
-/home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/rtio/CMakeFiles/subsys__rtio.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/rtio/CMakeFiles/edit_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/rtio/CMakeFiles/rebuild_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/sd/CMakeFiles/edit_cache.dir
@@ -180,12 +177,6 @@
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/settings/CMakeFiles/rebuild_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/settings/src/CMakeFiles/edit_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/settings/src/CMakeFiles/rebuild_cache.dir
-/home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/shell/CMakeFiles/edit_cache.dir
-/home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/shell/CMakeFiles/rebuild_cache.dir
-/home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/shell/modules/CMakeFiles/edit_cache.dir
-/home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/shell/modules/CMakeFiles/rebuild_cache.dir
-/home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/shell/backends/CMakeFiles/edit_cache.dir
-/home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/subsys/shell/backends/CMakeFiles/rebuild_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/drivers/CMakeFiles/edit_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/drivers/CMakeFiles/rebuild_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/zephyr/drivers/disk/CMakeFiles/edit_cache.dir
@@ -329,6 +320,8 @@
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/src/pointing/CMakeFiles/rebuild_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/src/split/CMakeFiles/edit_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/src/split/CMakeFiles/rebuild_cache.dir
+/home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/src/split/bluetooth/CMakeFiles/edit_cache.dir
+/home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/src/split/bluetooth/CMakeFiles/rebuild_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/src/display/CMakeFiles/edit_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/src/display/CMakeFiles/rebuild_cache.dir
 /home/reima/zmk-workspace/.build/aeonclok_right-nice_nano_v2/src/settings/CMakeFiles/edit_cache.dir

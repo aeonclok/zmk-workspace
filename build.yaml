@@ -13,11 +13,20 @@
 #
 ---
 include:
+  #- board: nice_nano_v2
+  #  shield: aeonclok_right
+  #  snippet: zmk-usb-logging
+  #- board: nice_nano_v2
+  #  shield: aeonclok_left
+  #  snippet: zmk-usb-logging
   - board: nice_nano_v2
-    shield: aeonclok_right
+    shield: tuuveitwo_right
     snippet: zmk-usb-logging
   - board: nice_nano_v2
-    shield: aeonclok_left
+    shield: tuuveitwo_left
     snippet: zmk-usb-logging
+  - board: nice_nano_v2
+    shield: settings_reset
+
   # - board: nice_nano_v2
   #  shield: settings_reset

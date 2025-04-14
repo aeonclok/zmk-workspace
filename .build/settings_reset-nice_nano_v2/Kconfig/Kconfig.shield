@@ -1,0 +1,2 @@
+osource "/Users/reimakokko/zmk-workspace/zmk-aeonclok-module/boards/shields/*/Kconfig.shield"
+osource "/Users/reimakokko/zmk-workspace/zmk/app/boards/shields/*/Kconfig.shield"

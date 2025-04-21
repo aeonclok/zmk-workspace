@@ -1,65 +1,65 @@
-menu "cirque-input-module (/home/reima/zmk-workspace/cirque-input-module)"
-osource "/home/reima/zmk-workspace/cirque-input-module/Kconfig"
+menu "cirque-input-module (/Users/reimakokko/zmk-workspace/cirque-input-module)"
+osource "/Users/reimakokko/zmk-workspace/cirque-input-module/Kconfig"
 config ZEPHYR_CIRQUE_INPUT_MODULE_MODULE
 	bool
 	default y
 endmenu
-menu "zmk-adaptive-key (/home/reima/zmk-workspace/modules/zmk/adaptive-key)"
-osource "/home/reima/zmk-workspace/modules/zmk/adaptive-key/Kconfig"
+menu "zmk-adaptive-key (/Users/reimakokko/zmk-workspace/modules/zmk/adaptive-key)"
+osource "/Users/reimakokko/zmk-workspace/modules/zmk/adaptive-key/Kconfig"
 config ZEPHYR_ZMK_ADAPTIVE_KEY_MODULE
 	bool
 	default y
 endmenu
-menu "zmk-auto-layer (/home/reima/zmk-workspace/modules/zmk/auto-layer)"
-osource "/home/reima/zmk-workspace/modules/zmk/auto-layer/Kconfig"
+menu "zmk-auto-layer (/Users/reimakokko/zmk-workspace/modules/zmk/auto-layer)"
+osource "/Users/reimakokko/zmk-workspace/modules/zmk/auto-layer/Kconfig"
 config ZEPHYR_ZMK_AUTO_LAYER_MODULE
 	bool
 	default y
 endmenu
-menu "zmk-leader-key (/home/reima/zmk-workspace/modules/zmk/leader-key)"
-osource "/home/reima/zmk-workspace/modules/zmk/leader-key/Kconfig"
+menu "zmk-leader-key (/Users/reimakokko/zmk-workspace/modules/zmk/leader-key)"
+osource "/Users/reimakokko/zmk-workspace/modules/zmk/leader-key/Kconfig"
 config ZEPHYR_ZMK_LEADER_KEY_MODULE
 	bool
 	default y
 endmenu
-menu "tri-state (/home/reima/zmk-workspace/modules/zmk/tri-state)"
-osource "/home/reima/zmk-workspace/modules/zmk/tri-state/Kconfig"
+menu "tri-state (/Users/reimakokko/zmk-workspace/modules/zmk/tri-state)"
+osource "/Users/reimakokko/zmk-workspace/modules/zmk/tri-state/Kconfig"
 config ZEPHYR_TRI_STATE_MODULE
 	bool
 	default y
 endmenu
-menu "nanopb (/home/reima/zmk-workspace/modules/lib/nanopb)"
+menu "nanopb (/Users/reimakokko/zmk-workspace/modules/lib/nanopb)"
 osource "$(ZEPHYR_NANOPB_KCONFIG)"
 config ZEPHYR_NANOPB_MODULE
 	bool
 	default y
 endmenu
-menu "cmsis (/home/reima/zmk-workspace/modules/hal/cmsis)"
+menu "cmsis (/Users/reimakokko/zmk-workspace/modules/hal/cmsis)"
 osource "$(ZEPHYR_CMSIS_KCONFIG)"
 config ZEPHYR_CMSIS_MODULE
 	bool
 	default y
 endmenu
-menu "hal_nordic (/home/reima/zmk-workspace/modules/hal/nordic)"
+menu "hal_nordic (/Users/reimakokko/zmk-workspace/modules/hal/nordic)"
 osource "$(ZEPHYR_HAL_NORDIC_KCONFIG)"
 config ZEPHYR_HAL_NORDIC_MODULE
 	bool
 	default y
 endmenu
-menu "hal_rpi_pico (/home/reima/zmk-workspace/modules/hal/rpi_pico)"
+menu "hal_rpi_pico (/Users/reimakokko/zmk-workspace/modules/hal/rpi_pico)"
 osource "$(ZEPHYR_HAL_RPI_PICO_KCONFIG)"
 config ZEPHYR_HAL_RPI_PICO_MODULE
 	bool
 	default y
 endmenu
-menu "lvgl (/home/reima/zmk-workspace/modules/lib/gui/lvgl)"
-osource "/home/reima/zmk-workspace/modules/lib/gui/lvgl/Kconfig"
+menu "lvgl (/Users/reimakokko/zmk-workspace/modules/lib/gui/lvgl)"
+osource "/Users/reimakokko/zmk-workspace/modules/lib/gui/lvgl/Kconfig"
 config ZEPHYR_LVGL_MODULE
 	bool
 	default y
 endmenu
-menu "module (/home/reima/zmk-workspace/zmk/app/module)"
-osource "/home/reima/zmk-workspace/zmk/app/module/Kconfig"
+menu "module (/Users/reimakokko/zmk-workspace/zmk/app/module)"
+osource "/Users/reimakokko/zmk-workspace/zmk/app/module/Kconfig"
 config ZEPHYR_MODULE_MODULE
 	bool
 	default y

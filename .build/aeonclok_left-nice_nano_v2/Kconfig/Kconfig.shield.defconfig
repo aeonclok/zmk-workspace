@@ -1,2 +1,2 @@
-osource "/home/reima/zmk-workspace/zmk-aeonclok-module/boards/shields/*/Kconfig.defconfig"
-osource "/home/reima/zmk-workspace/zmk/app/boards/shields/*/Kconfig.defconfig"
+osource "/Users/reimakokko/zmk-workspace/zmk-aeonclok-module/boards/shields/*/Kconfig.defconfig"
+osource "/Users/reimakokko/zmk-workspace/zmk/app/boards/shields/*/Kconfig.defconfig"

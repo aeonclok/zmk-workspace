@@ -1,9 +1,8 @@
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/mouse.h>
-#include <behaviors/num_word.dtsi> // requires auto-layer module
+//#include <behaviors/num_word.dtsi> // requires auto-layer module
 
 #include "zmk-helpers/helper.h"
 
@@ -20,8 +19,67 @@
 #define COMBO_TERM_SLOW 50
 #define COMBO_GLOBAL_QUICKTAP 100
 
-#define hmTAPPING_TERM 300
-#define hmTAPPING_TERM_FAST 200
+//        0  1  2  3       4  5  6  7           <- row 0
+//    8  9  10 11 12       13 14 15 16 17       <- row 1
+// 18 19 20 21 22             23 24 25 26 27    <- row 2
+// 28 29       30 31 32 33 34 35       36 37    <- row 3
+
+// Left Top Row
+#define LTR  0  // Left Top Ring
+#define LTM  1  // Left Top Middle
+#define LTI  2  // Left Top Index
+#define LTIS 3  // Left Top Index Side
+
+// Right Top Row
+#define RTIS 4
+#define RTI  5
+#define RTM  6
+#define RTR  7
+
+// Left Home Row
+#define LHRS 8
+#define LHR  9
+#define LHM  10
+#define LHI  11
+#define LHIS 12
+
+// Right Home Row
+#define RHIS 13
+#define RHI  14
+#define RHM  15
+#define RHR  16
+#define RHRS 17
+
+// Left Bottom Row
+#define LHPS 18
+#define LHP  19
+#define LBR  20
+#define LBM  21
+#define LBI  22
+
+// Right Bottom Row
+#define RBI  23
+#define RBM  24
+#define RBR  25
+#define RHP  26
+#define RHPS 27
+
+// Left Row 4
+#define LBPS 28
+#define LBP  29
+#define LTL  30 // Left Thumb Left
+#define LBM  31 // Left Thumb Middle
+#define LBR  32 // Left Thumb Right
+
+// Right Row 4
+#define RTL  33
+#define RBM  34
+#define RBR  35
+#define RBP  36
+#define RBPS 37
+
+//#define hmTAPPING_TERM 300
+//#define hmTAPPING_TERM_FAST 200
 
 #define MACRO(_name_, _bindings_)          \
 _name_: _name_##_macro {                   \
@@ -57,17 +115,17 @@ combo_##_name_ {                                                \
     layers                = <_layers_>;                         \
 };
 
-#define SMART_NUM &smart_num NUM 0
-ZMK_HOLD_TAP(smart_num,
-    flavor = "balanced";
-    tapping-term-ms = <200>;
-    quick-tap-ms = <175>;
-    bindings = <&mo>, <&num_dance>;
-)
-ZMK_TAP_DANCE(num_dance,
-    tapping-term-ms = <200>;
-    bindings = <&num_word NUM>, <&sl NUM>;  // reverse this for sticky-num on single tap
-)
+//#define SMART_NUM &smart_num NUM 0
+//ZMK_HOLD_TAP(smart_num,
+//    flavor = "balanced";
+//    tapping-term-ms = <200>;
+//    quick-tap-ms = <175>;
+//    bindings = <&mo>, <&num_dance>;
+//)
+//ZMK_TAP_DANCE(num_dance,
+//    tapping-term-ms = <200>;
+//    bindings = <&num_word NUM>, <&sl NUM>;  // reverse this for sticky-num on single tap
+//)
 
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS) \
     ZMK_HOLD_TAP(NAME, \
@@ -165,7 +223,7 @@ ZMK_TRI_STATE(quick_sw_mac,
         // 1 and 1+2 row combos left hand
 //        COMBO(tog_hakea,        &tog HAKEA,           0 1, WIN MAC NUM MOUSE NAV HAKEA REPEAT)
 //        COMBO(tog_stnk1,        &tog REPEAT,           10 11, WIN MAC NUM MOUSE NAV HAKEA REPEAT)
-//        COMBO(TAB,              &kp TAB,              1 2, WIN MAC)
+        COMBO(TAB,              &kp TAB,              LTR LTM, WIN MAC)
 //        COMBO(br_curly_mac,     &mod_br_curly_mac,    2 3, MAC)
 //        COMBO(br_curly_win,     &mod_br_curly_win,    2 3, WIN)
 //        COMBO(euro_mac,         &kp LS(NUMBER_4),     3 4, MAC)
@@ -186,15 +244,15 @@ ZMK_TRI_STATE(quick_sw_mac,
 //        COMBO(copy_win,         &kp LC(C),            16 7, WIN NUM)
 //
 //        // 2 and 2+3 row combos left hand
-//        COMBO(esc,              &kp ESC,              11 12, WIN MAC)
+        COMBO(esc,              &kp ESC,              LHR LHM, WIN MAC)
 //        COMBO(br_round,         &mod_br_round,        12 13, WIN MAC)
 //        COMBO(br_angled_mac,    &mod_br_angled_mac,   12 23, MAC)
 //        COMBO(br_angled_win,    &mod_br_angled_win,   12 23, WIN)
 //        COMBO(dollar,           &kp RA(NUMBER_4),     13 24, WIN MAC)
 //
         // 2 and 2+3 row combos right hand
-        COMBO(enter,            &kp RET,              56 57, WIN MAC)
-        COMBO(backspace_delete, &mod_bspc_del,        57 58, WIN MAC)
+        COMBO(enter,            &kp RET,              RHI RHM, WIN MAC)
+        COMBO(backspace_delete, &mod_bspc_del,        RHM RHR, WIN MAC)
 //        COMBO(equals_percent,   &mod_equals_percent,  26 17, WIN MAC)
 //        COMBO(colon,            &kp LS(DOT),          27 16, WIN MAC)
 //        COMBO(mod_slashes_win,  &mod_slashes_win,     17 28, WIN)
@@ -250,23 +308,23 @@ ZMK_TRI_STATE(quick_sw_mac,
         MODMORPH(mod_slashes_mac, &kp LS(NUMBER_7), &kp RA(LS(NUMBER_7)))
         MODMORPH(mod_slashes_win, &kp LS(NUMBER_7), &kp RA(MINUS))
         MODMORPH(mod_plus_asterisk, &kp MINUS ,&kp LS(BACKSLASH))
-
+  };
     keymap {
     compatible = "zmk,keymap";
-
+//&hml LCTRL S  &hml LALT T   &hml LGUI N
         default_layer {
         bindings = <
                           &kp P     &kp L     &kp H     &kp V                         &kp C     &kp G     &kp O     &kp DOT
                 &kp F     &kp T     &kp N     &kp K     &kp B                         &kp W     &kp U     &kp A     &kp E     &kp Z
       &kp RSHFT &kp S     &kp D     &kp R     &kp M                                             &kp Y     &kp SQT   &kp SEMI  &kp I     &kp LSHFT
-      &kp X     &kp J                         &kp A     &kp A     &kp A     &lt 1 A   &kp SPACE &kp A                         &kp COMMA &kp Q
+      &kp X     &kp J                         &kp A     &key_repeat &kp A   &lt 1 A   &kp SPACE &kp A                         &kp COMMA &kp Q
         >;
         };
 
         second_layer {
         bindings = <
                           &trans    &trans    &trans    &trans                        &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
-                &trans    &trans    &trans    &trans    &trans                        &out OUT_TOG &trans  &trans   &trans    &trans
+                &trans    &trans    &trans    &trans    &trans                        &trans &trans  &trans   &trans    &trans
       &trans    &trans    &trans    &trans    &trans                                            &trans    &trans    &trans    &trans    &trans
       &trans    &trans                        &trans    &trans    &trans    &trans    &bootloader &sys_reset                  &bt BT_CLR &bt BT_CLR
         >;

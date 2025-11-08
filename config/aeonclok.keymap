@@ -67,14 +67,14 @@
 // Left Row 4
 #define LBPS 28
 #define LBP  29
-#define LTL  30 // Left Thumb Left
-#define LBM  31 // Left Thumb Middle
-#define LBR  32 // Left Thumb Right
+#define LTHL  30 // Left Thumb Left
+#define LTHM  31 // Left Thumb Middle
+#define LTHR  32 // Left Thumb Right
 
 // Right Row 4
-#define RTL  33
-#define RBM  34
-#define RBR  35
+#define RTHL  33
+#define RTHM  34
+#define RTHR  35
 #define RBP  36
 #define RBPS 37
 
@@ -225,10 +225,10 @@ ZMK_TRI_STATE(quick_sw_mac,
 //        COMBO(tog_stnk1,        &tog REPEAT,           10 11, WIN MAC NUM MOUSE NAV HAKEA REPEAT)
         COMBO(TAB,              &kp TAB,              LTR LTM, WIN MAC)
 //        COMBO(br_curly_mac,     &mod_br_curly_mac,    2 3, MAC)
-//        COMBO(br_curly_win,     &mod_br_curly_win,    2 3, WIN)
+        COMBO(br_curly_win,     &mod_br_curly_win,    LTM LTI, WIN)
 //        COMBO(euro_mac,         &kp LS(NUMBER_4),     3 4, MAC)
 //        COMBO(euro_win,         &kp RA(E),            3 4, WIN)
-//        COMBO(br_square,        &mod_br_square,       2 13, WIN MAC)
+        COMBO(br_square,        &mod_br_square,       LTM LHI, WIN MAC)
 //        COMBO(at,               &kp RA(NUMBER_2),     3 14, WIN MAC)
 //        COMBO(switcher_mac,     &switcher_mac,        1 12, MAC NUM)
 //        COMBO(quick_sw_mac,     &quick_sw_mac,        11 2, MAC NUM)
@@ -236,7 +236,7 @@ ZMK_TRI_STATE(quick_sw_mac,
 //        COMBO(quick_sw_win,     &quick_sw_win,        11 2, WIN NUM)
 //        
 //        // 1 and 1+2 row combos right hand
-//        COMBO(doublequote,      &kp LS(NUMBER_2),     6 7, WIN MAC)
+        COMBO(doublequote,      &kp LS(NUMBER_2),     LHM LHI, WIN MAC)
 //        COMBO(question,         &kp LS(MINUS),        7 8, WIN MAC)
 //        COMBO(exclamation,      &kp LS(NUMBER_1),     7 18, WIN MAC)
 //        COMBO(squot_btick,      &mod_squot_btick,     16 7, WIN MAC)
@@ -244,7 +244,7 @@ ZMK_TRI_STATE(quick_sw_mac,
 //        COMBO(copy_win,         &kp LC(C),            16 7, WIN NUM)
 //
 //        // 2 and 2+3 row combos left hand
-        COMBO(esc,              &kp ESC,              LHR LHM, WIN MAC)
+        COMBO(esc,              &kp CAPS,              LHR LHM, WIN MAC)
 //        COMBO(br_round,         &mod_br_round,        12 13, WIN MAC)
 //        COMBO(br_angled_mac,    &mod_br_angled_mac,   12 23, MAC)
 //        COMBO(br_angled_win,    &mod_br_angled_win,   12 23, WIN)

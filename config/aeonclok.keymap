@@ -1,19 +1,23 @@
 #include <behaviors.dtsi>
+#include <behaviors/num_word.dtsi> // Requires zmk-auto-layer module.
+#include <behaviors/unicode.dtsi> // Requires zmk-unicode module.
+#include <zmk-helpers/helper.h> // Requires zmk-helpers module.
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/mouse.h>
-//#include <behaviors/num_word.dtsi> // requires auto-layer module
 
 #include "zmk-helpers/helper.h"
 
+#define QUICK_TAP_MS 175
 #define WIN 0
 #define MAC 1
+#define NUM 2
 
 #define AS(keycode) &as LS(keycode) keycode
 
-#define KEYS_L 33 34 35 36 37 38 49 50 51 52 53 54 63 64 65 66 67 68
-#define KEYS_R 39 40 41 42 43 44 45 55 56 57 58 59 60 61 69 70 71 72 73 74
-#define KEYS_T 80 82
+#define KEYS_L 0 1 2 3 8 9 10 11 12 18 19 20 21 22 28 29
+#define KEYS_R 4 5 6 7 13 14 15 16 17 23 24 25 26 27 36 37
+#define KEYS_T 30 31 32 33 34 35
 
 #define COMBO_TERM_FAST 35
 #define COMBO_TERM_SLOW 50
@@ -115,17 +119,13 @@ combo_##_name_ {                                                \
     layers                = <_layers_>;                         \
 };
 
-//#define SMART_NUM &smart_num NUM 0
-//ZMK_HOLD_TAP(smart_num,
-//    flavor = "balanced";
-//    tapping-term-ms = <200>;
-//    quick-tap-ms = <175>;
-//    bindings = <&mo>, <&num_dance>;
-//)
-//ZMK_TAP_DANCE(num_dance,
-//    tapping-term-ms = <200>;
-//    bindings = <&num_word NUM>, <&sl NUM>;  // reverse this for sticky-num on single tap
-//)
+// Tap: num-word | double-tap: sticky num-layer | Hold: num-layer.
+#define SMART_NUM &smart_num NUM 0
+ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
+             tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
+ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
+              tapping-term-ms = <200>;)
+
 
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS) \
     ZMK_HOLD_TAP(NAME, \
@@ -223,58 +223,58 @@ ZMK_TRI_STATE(quick_sw_mac,
         // 1 and 1+2 row combos left hand
 //        COMBO(tog_hakea,        &tog HAKEA,           0 1, WIN MAC NUM MOUSE NAV HAKEA REPEAT)
 //        COMBO(tog_stnk1,        &tog REPEAT,           10 11, WIN MAC NUM MOUSE NAV HAKEA REPEAT)
-        COMBO(TAB,              &kp TAB,              LTR LTM, WIN MAC)
-//        COMBO(br_curly_mac,     &mod_br_curly_mac,    2 3, MAC)
-        COMBO(br_curly_win,     &mod_br_curly_win,    LTM LTI, WIN)
-//        COMBO(euro_mac,         &kp LS(NUMBER_4),     3 4, MAC)
-//        COMBO(euro_win,         &kp RA(E),            3 4, WIN)
-        COMBO(br_square,        &mod_br_square,       LTM LHI, WIN MAC)
-//        COMBO(at,               &kp RA(NUMBER_2),     3 14, WIN MAC)
+        COMBO(TAB,              &kp TAB,              LTR LTM, WIN NUM MAC)
+        COMBO(br_curly_mac,     &mod_br_curly_mac,    LTR LTM, NUM MAC)
+        COMBO(br_curly_win,     &mod_br_curly_win,    LTM LTI, WIN NUM)
+        COMBO(br_square,        &mod_br_square,       LTM LHI, WIN NUM MAC)
 //        COMBO(switcher_mac,     &switcher_mac,        1 12, MAC NUM)
 //        COMBO(quick_sw_mac,     &quick_sw_mac,        11 2, MAC NUM)
-//        COMBO(switcher_win,     &switcher_win,        1 12, WIN NUM)
-//        COMBO(quick_sw_win,     &quick_sw_win,        11 2, WIN NUM)
+//        COMBO(switcher_win,     &switcher_win,        1 12, WIN NUM NUM)
+//        COMBO(quick_sw_win,     &quick_sw_win,        11 2, WIN NUM NUM)
 //        
 //        // 1 and 1+2 row combos right hand
-        COMBO(doublequote,      &kp LS(NUMBER_2),     LHM LHI, WIN MAC)
-//        COMBO(question,         &kp LS(MINUS),        7 8, WIN MAC)
-//        COMBO(exclamation,      &kp LS(NUMBER_1),     7 18, WIN MAC)
-//        COMBO(squot_btick,      &mod_squot_btick,     16 7, WIN MAC)
+        COMBO(doublequote,      &kp LS(NUMBER_2),     RTI RTM, WIN NUM MAC)
+        COMBO(question,         &mod_question_amp,        RTM RTR, WIN NUM MAC)
+        COMBO(bang_hash,        &mod_bang_hash,     RTM RHR, WIN NUM MAC)
+        COMBO(squot_btick,      &mod_squot_btick,     RHI RTM, WIN NUM MAC)
 //        COMBO(copy_mac,         &kp LG(C),            15 6, MAC NUM)
-//        COMBO(copy_win,         &kp LC(C),            16 7, WIN NUM)
+//        COMBO(copy_win,         &kp LC(C),            16 7, WIN NUM NUM)
 //
 //        // 2 and 2+3 row combos left hand
-        COMBO(esc,              &kp CAPS,              LHR LHM, WIN MAC)
-//        COMBO(br_round,         &mod_br_round,        12 13, WIN MAC)
-//        COMBO(br_angled_mac,    &mod_br_angled_mac,   12 23, MAC)
-//        COMBO(br_angled_win,    &mod_br_angled_win,   12 23, WIN)
-//        COMBO(dollar,           &kp RA(NUMBER_4),     13 24, WIN MAC)
+        COMBO(esc,              &kp CAPS,             LHR LHM, WIN NUM MAC)
+        COMBO(br_round,         &mod_br_round,        LHM LHI, WIN NUM MAC)
+        COMBO(br_angled_mac,    &mod_br_angled_mac,   LHM LBI, MAC NUM)
+        COMBO(br_angled_win,    &mod_br_angled_win,   LHM LBI, WIN NUM)
+        COMBO(euro_mac,         &kp LS(NUMBER_4),     LHIS LHI, MAC NUM)
+        COMBO(euro_win,         &kp RA(E),            LHIS LHI, WIN NUM)
 //
         // 2 and 2+3 row combos right hand
-        COMBO(enter,            &kp RET,              RHI RHM, WIN MAC)
-        COMBO(backspace_delete, &mod_bspc_del,        RHM RHR, WIN MAC)
-//        COMBO(equals_percent,   &mod_equals_percent,  26 17, WIN MAC)
-//        COMBO(colon,            &kp LS(DOT),          27 16, WIN MAC)
-//        COMBO(mod_slashes_win,  &mod_slashes_win,     17 28, WIN)
+        COMBO(dollar,           &kp RA(NUMBER_4),     RHIS RHI, WIN NUM MAC)
+        COMBO(at,               &kp RA(NUMBER_2),     RTIS RTI, WIN NUM MAC)
+        COMBO(enter,            &kp RET,              RHI RHM, WIN NUM MAC)
+        COMBO(backspace_delete, &mod_bspc_del,        RHM RHR, WIN NUM MAC)
+        COMBO(equals_percent,   &mod_equals_percent,  RBI RHM, WIN NUM MAC)
+//        COMBO(colon,            &kp LS(DOT),          27 16, WIN NUM MAC)
+        COMBO(mod_slashes_win,  &mod_slashes_win,     RHM RBR, WIN NUM)
 //        COMBO(mod_slashes_mac,  &mod_slashes_mac,     17 28, MAC)
-//        COMBO(pipe_mac,         &kp RA(NUMBER_7),     27 18, MAC)
-//        COMBO(pipe_win,         &kp RA(NON_US_BSLH),  27 18, WIN)
+        COMBO(pipe_mac,         &kp RA(NUMBER_7),     RBM RHR, MAC)
+        COMBO(pipe_win,         &kp RA(NON_US_BSLH),  RBM RHR, WIN NUM)
 //        COMBO(paste_mac,        &kp LG(V),            25 16, MAC)
-//        COMBO(paste_win,        &kp LC(V),            26 17, WIN)
+//        COMBO(paste_win,        &kp LC(V),            26 17, WIN NUM)
 //
 //        // 3 row combos left hand
-//        COMBO(amp_hash,         &mod_amp_hash,        22 23, WIN MAC)
-//        COMBO(tilde_caret,      &mod_tilde_caret,     21 22, WIN MAC)
+        COMBO(amp_hash,         &mod_amp_hash,        LBM LBI, WIN NUM MAC)
+        COMBO(tilde_caret,      &mod_tilde_caret,     LBR LBM, WIN NUM MAC)
 //
 //        // 3 row combos right hand
-//        COMBO(plus_asterisk,    &mod_plus_asterisk,   26 27, WIN MAC)
-//        COMBO(minus,            &kp SLASH,            27 28, WIN MAC)
+        COMBO(plus_asterisk,    &mod_plus_asterisk,   RBI RBM, WIN NUM MAC)
+        COMBO(minus,            &kp SLASH,            RBM RBR, WIN NUM MAC)
 //      
 //        // mixed combos
-//        COMBO(toggle_win_mac,   &tog MAC,             30 31 32 33, WIN MAC)
-//        COMBO(toggle_mouse,     &tog MOUSE,           6 8, WIN MAC)
-//        COMBO(toggle_num,       &tog NUM,             13 16, WIN MAC)
-//        COMBO(toggle_unlock,    &studio_unlock,       4 5, WIN MAC)
+//        COMBO(toggle_win_mac,   &tog MAC,             30 31 32 33, WIN NUM MAC)
+//        COMBO(toggle_mouse,     &tog MOUSE,           6 8, WIN NUM MAC)
+//        COMBO(toggle_num,       SMART_NUM,             LHI RHI, WIN NUM MAC)
+//        COMBO(toggle_unlock,    &studio_unlock,       4 5, WIN NUM MAC)
 
     };
 
@@ -308,6 +308,8 @@ ZMK_TRI_STATE(quick_sw_mac,
         MODMORPH(mod_slashes_mac, &kp LS(NUMBER_7), &kp RA(LS(NUMBER_7)))
         MODMORPH(mod_slashes_win, &kp LS(NUMBER_7), &kp RA(MINUS))
         MODMORPH(mod_plus_asterisk, &kp MINUS ,&kp LS(BACKSLASH))
+        MODMORPH(mod_question_amp, &kp LS(MINUS), &kp LS(NUMBER_6))
+        MODMORPH(mod_bang_hash, &kp LS(NUMBER_1), &kp LS(NUMBER_3))
   };
     keymap {
     compatible = "zmk,keymap";
@@ -315,25 +317,36 @@ ZMK_TRI_STATE(quick_sw_mac,
         default_layer {
         bindings = <
                           &kp P     &kp L     &kp H     &kp V                         &kp C     &kp G     &kp O     &kp DOT
-                &kp F     &kp T     &kp N     &kp K     &kp B                         &kp W     &kp U     &kp A     &kp E     &kp Z
-      &kp RSHFT &kp S     &kp D     &kp R     &kp M                                             &kp Y     &kp SQT   &kp SEMI  &kp I     &kp LSHFT
-      &kp X     &kp J                         &kp A     &key_repeat &kp A   &lt 1 A   &kp SPACE &kp A                         &kp COMMA &kp Q
+                &kp F     &hml LALT T &hml LGUI N &kp K &kp B                         &kp W     &kp U &hmr RGUI A &hmr LALT E &kp Z
+      &kp RSHFT &hml LCTRL S &kp D  &kp R     &kp M                                   &kp Y     &kp SQT   &kp SEMI  &hmr RCTRL I        &kp LSHFT
+      &kp X     &kp J                         &kp A &key_repeat SMART_NUM   SMART_NUM &lt 3 SPACE &lt 1 A                         &kp COMMA &kp Q
         >;
         };
 
         second_layer {
         bindings = <
                           &trans    &trans    &trans    &trans                        &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
-                &trans    &trans    &trans    &trans    &trans                        &trans &trans  &trans   &trans    &trans
+                &trans    &trans    &trans    &trans    &trans                        &trans    &trans    &trans    &trans    &trans
       &trans    &trans    &trans    &trans    &trans                                            &trans    &trans    &trans    &trans    &trans
-      &trans    &trans                        &trans    &trans    &trans    &trans    &bootloader &sys_reset                  &bt BT_CLR &bt BT_CLR
+      &trans    &trans                        &trans    &trans    &trans   &sys_reset &bootloader &trans                      &bt BT_CLR &bt BT_CLR
+        >;
+        };
+        third_layer {
+        bindings = <
+                          &trans    &trans    &trans    &trans                        &trans    &kp N7    &kp N8    &kp N9
+                &trans &hml LALT N5 &hml LGUI N3 &kp N1 &trans                        &kp N0 &kp N4 &hmr RGUI N5 &hmr LALT N6 &trans
+      &trans  &hml LCTRL N7 &trans  &trans    &kp N9                                            &kp N1    &kp N2    &kp N3    &hmr RCTRL N6 &trans
+      &trans    &trans                        &trans    &trans    &trans    &trans    &trans    &trans                        &trans    &trans
+        >;
+        };
+        fourth_layer {
+        bindings = <
+                          &trans    &trans    &trans    &trans                        &kp H     &trans   &trans    &trans
+                &trans    &trans    &trans    &trans    &trans                        &kp LEFT  &kp J     &kp K     &kp L     &trans
+      &trans    &trans    &trans    &trans    &trans                                            &kp DOWN  &kp UP    &kp RIGHT &trans    &trans
+      &trans    &trans                        &trans    &trans    &trans    &trans    &trans    &trans                        &trans    &trans
         >;
         };
     };
 };
 
-
-//                          RC(0,0) RC(0,1) RC(0,2) RC(0,3)                 RC(0,8) RC(0,7) RC(0,6) RC(0,5)
-//                  RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4)                 RC(1,9) RC(1,8) RC(1,7) RC(1,6) RC(1,5)
-//          RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)                                 RC(2,9) RC(2,8) RC(2,7) RC(2,6) RC(2,5)
-//          RC(3,0) RC(3,1)                 RC(3,2) RC(3,3) RC(3,4) RC(3,9) RC(3,8) RC(3,7)                 RC(3,6) RC(3,5)

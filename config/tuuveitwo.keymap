@@ -8,6 +8,12 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+#include <behaviors/num_word.dtsi> // Requires zmk-auto-layer module.
+#include <behaviors/unicode.dtsi> // Requires zmk-unicode module.
+#include <zmk-helpers/helper.h> // Requires zmk-helpers module.
+#include <dt-bindings/zmk/mouse.h>
+
+#include "zmk-helpers/helper.h"
 
 #define WIN 0
 #define MAC 1
@@ -116,8 +122,8 @@ combo_##_name_ {                                                \
 //        COMBO(dollar,           &kp RA(NUMBER_4),     13 24, WIN MAC)
 //
         // 2 and 2+3 row combos right hand
-        COMBO(enter,            &kp RET,              56 57, WIN MAC)
-        COMBO(backspace_delete, &mod_bspc_del,        57 58, WIN MAC)
+//        COMBO(enter,            &kp RET,              56 57, WIN MAC)
+//        COMBO(backspace_delete, &mod_bspc_del,        57 58, WIN MAC)
 //        COMBO(equals_percent,   &mod_equals_percent,  26 17, WIN MAC)
 //        COMBO(colon,            &kp LS(DOT),          27 16, WIN MAC)
 //        COMBO(mod_slashes_win,  &mod_slashes_win,     17 28, WIN)
@@ -201,7 +207,7 @@ combo_##_name_ {                                                \
             &trans &trans &trans &trans &trans                 &trans         &trans &trans &trans                   &trans &trans &trans
         >;
 
-        sensor-bindings = <&trans>;
+        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
     };
     };
 };

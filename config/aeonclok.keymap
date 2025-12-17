@@ -6,7 +6,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/mouse.h>
 
-#include "zmk-helpers/helper.h"
 
 #define QUICK_TAP_MS 175
 #define WIN 0
@@ -313,8 +312,7 @@ ZMK_TRI_STATE(quick_sw_mac,
   };
     keymap {
     compatible = "zmk,keymap";
-//&hml LCTRL S  &hml LALT T   &hml LGUI N
-        default_layer {
+      default_layer {
         bindings = <
                           &kp P     &kp L     &kp H     &kp V                         &kp C     &kp G     &kp O     &kp DOT
                 &kp F     &hml LALT T &hml LGUI N &kp K &kp B                         &kp W     &kp U &hmr RGUI A &hmr LALT E &kp Z

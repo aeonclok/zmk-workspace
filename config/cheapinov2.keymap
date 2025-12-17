@@ -12,7 +12,6 @@
 #include <behaviors/unicode.dtsi> // Requires zmk-unicode module.
 #include <zmk-helpers/helper.h> // Requires zmk-helpers module.
 
-#include "zmk-helpers/helper.h"
 
 #define QUICK_TAP_MS 175
 #define WIN 0
@@ -73,8 +72,8 @@
 #define RBIS 25
 #define RBI  26
 #define RBM  27
-#define RHR  28
-#define RHP  29
+#define RBR  28
+#define RBP  29
 
 // Left Row 4
 #define LTHL  30 // Left Thumb Left
@@ -130,6 +129,28 @@ ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
 ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
               tapping-term-ms = <200>;)
 
+
+/* Magic-shift & auto-layers */
+
+// Tap: repeat after alpha, else sticky-shift |
+// Shift + tap/ double-tap: caps-word | Hold: shift.
+#define REP_SHFT &magic_shift LSHFT 0
+ZMK_HOLD_TAP(magic_shift, bindings = <&kp>, <&magic_shift_tap>;
+             flavor = "balanced"; tapping-term-ms = <200>;
+             quick-tap-ms = <QUICK_TAP_MS>;)
+ZMK_MOD_MORPH(magic_shift_tap, bindings = <&shift_repeat>, <&caps_word>;
+              mods = <(MOD_LSFT)>;)
+ZMK_ADAPTIVE_KEY(
+    shift_repeat, bindings = <&sk LSHFT>;
+    repeat {
+      trigger-keys = <A B C D E F G H I J K L M N O P Q R S T U V W X Y Z SQT SEMI>;
+      bindings = <&key_repeat>;
+      max-prior-idle-ms = <1200>;
+      strict-modifiers;
+    };)
+&caps_word { // Mods deactivate caps-word, requires PR #1451. [TODO: rebase]
+  /delete-property/ ignore-modifiers;
+};
 
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS) \
     ZMK_HOLD_TAP(NAME, \
@@ -320,19 +341,24 @@ ZMK_TRI_STATE(quick_sw_mac,
 //&hml LCTRL S  &hml LALT T   &hml LGUI N
         default_layer {
         bindings = <
-      &kp F        &kp P       &kp L       &kp H       &kp V                           &kp C       &kp G     &kp O       &kp DOT     &kp Z
-      &hml LCTRL S &hml LALT T &hml LGUI N &kp K       &kp B                           &kp W       &kp U     &hmr RGUI A &hmr LALT E &hmr RCTRL I
-      &kp J        &kp D       &kp R       &kp M       &kp X                           &kp Q       &kp Y     &kp SQT     &kp SEMI    &kp COMMA 
-                                           &kp A       &key_repeat SMART_NUM SMART_NUM &lt 3 SPACE &lt 1 A                         
+//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+   &kp F         &kp P         &kp L         &kp H         &kp B           &kp W         &kp G         &kp O         &kp DOT       &kp Z
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+   &kp S         &hml LALT T   &hml LGUI N   &kp K         &kp V           &kp C         &kp U         &hmr RGUI A   &hmr LALT E   &hmr RCTRL I
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+   &kp J         &kp D         &kp R         &kp M         &kp X           &kp Q         &kp Y         &kp SQT       &kp SEMI      &kp COMMA 
+//╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯
+                               &kp A         REP_SHFT      &kp LALT        SMART_NUM     &lt 3 SPACE   &lt 1 A
+//                            ╰─────────────┴─────────────┴─────────────╯ ╰─────────────┴─────────────┴─────────────╯ 
         >;
         };
 
         second_layer {
         bindings = <
-      &trans    &trans    &trans    &trans    &trans                        &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5
       &trans    &trans    &trans    &trans    &trans                        &trans       &trans    &trans    &trans    &trans
-      &trans    &trans    &trans    &trans    &trans                        &trans       &trans    &trans    &bt BT_CLR &bt BT_CLR
-                                    &trans    &trans    &trans   &sys_reset &bootloader  &trans                      
+      &trans    &trans    &trans    &trans    &trans                        &trans       &trans    &trans    &trans    &trans
+      &trans    &trans    &trans    &trans    &trans                        &trans       &trans    &trans    &trans    &trans
+                                    &trans    &trans    &trans   &trans &trans &trans                      
         >;
         };
         third_layer {
